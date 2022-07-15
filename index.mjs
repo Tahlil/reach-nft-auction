@@ -36,8 +36,13 @@ const startBidders = async () => {
 
         console.log(`${who} decides to bid ${stdlib.formatCurrency(bid)}.`);
         console.log(`${who} balnce before is  ${await getBal()}`);
-
-        
+        try {
+            const [ lastBidder, lastBid ] = await ctc.apis.Bidder.bid(bid);
+            console.log(`${who} out bid the ${lastBidder} who bid ${stdlib.formatCurrency(lastBid)}.`);
+        } catch (err) {
+            console.log(`${who} failed to bid because the auction is over`);
+        }
+        console.log(`${who} balnce after is ${await getBal()}`);
     };
 };
 

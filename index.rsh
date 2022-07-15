@@ -1,6 +1,6 @@
 'reach 0.1'
 
-export const main = Reach.Aoo(() => {
+export const main = Reach.App(() => {
     const Creator = Participant('Creator', {
         getSale: Fun([], Object({
             nftId: Token,
@@ -17,4 +17,9 @@ export const main = Reach.Aoo(() => {
     });
 
     init();
+
+    Creator.only(() => {
+        const {nftId, minBid, lenInBlocks} = declassify(interact.getSale());
+    });
+    Creator.publish(nftId, minBid, lenInBlocks);
 })

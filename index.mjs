@@ -28,7 +28,7 @@ const startBidders = async () => {
 
         const acc = await stdlib.newTestAccount(startingBalance);
         acc.setDebugLabel(who);
-        await acc.tokeAccept(nftId);
+        await acc.tokenAccept(nftId);
 
         bidders.push([who, acc]);
         const ctc = acc.contract(backend, ctcCreator.getInfo());
@@ -74,7 +74,7 @@ await ctcCreator.participants.Creator({
 
 for ( const [ who, acc] of bidders) {
     const [ amt, amtNFT] = await stdlib.balanceOf(acc, [null, nftId]);
-    console.log(`${who} has ${stdlib.formatCurrency(amot)} ${stdlib.standardUint} and ${amtNFT}`);
+    console.log(`${who} has ${stdlib.formatCurrency(amt)} ${stdlib.standardUint} and ${amtNFT}`);
 }
 
 done = true;

@@ -63,4 +63,6 @@ export const main = Reach.App(() => {
         transfer(lastPrice).to(Creator);
       }
       Creator.interact.showOutcome(highestBidder, lastPrice);
+      commit();
+      exit();
 })

@@ -77,5 +77,5 @@ for ( const [ who, acc] of bidders) {
     console.log(`${who} has ${stdlib.formatCurrency(amot)} ${stdlib.standardUint} and ${amtNFT}`);
 }
 
-
+done = true;
 

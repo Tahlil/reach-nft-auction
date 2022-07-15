@@ -10,5 +10,9 @@ export const main = Reach.Aoo(() => {
         auctionReady: Fun([], Null),
         seeBid: Fun([Address, UInt], Null),
         showOutcome: Fun([Address, UInt], Null),
-    })
+    });
+
+    const Bidder = API('Bidder', {
+        bid: Fun([UInt], Tuple(Address, UInt)),
+    });
 })

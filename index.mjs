@@ -44,6 +44,8 @@ const startBidders = async () => {
         }
         console.log(`${who} balnce after is ${await getBal()}`);
     };
+
+    
 };
 
 const ctcCreator = accCreator.contract(backend);

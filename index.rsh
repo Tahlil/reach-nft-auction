@@ -57,4 +57,10 @@ export const main = Reach.App(() => {
         Creator.publish();
         return [highestBidder, lastPrice, isFirstBid];
       });
+
+      transfer(amt, nftId).to(highestBidder);
+      if ( !isFirstBid) {
+        transfer(lastPrice).to(Creator);
+      }
+      Creator.interact.showOutcome(highestBidder, lastPrice);
 })

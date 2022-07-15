@@ -15,4 +15,6 @@ export const main = Reach.Aoo(() => {
     const Bidder = API('Bidder', {
         bid: Fun([UInt], Tuple(Address, UInt)),
     });
+
+    init();
 })

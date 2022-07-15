@@ -22,4 +22,8 @@ export const main = Reach.App(() => {
         const {nftId, minBid, lenInBlocks} = declassify(interact.getSale());
     });
     Creator.publish(nftId, minBid, lenInBlocks);
+
+    const amt = 1;
+    commit();
+    
 })

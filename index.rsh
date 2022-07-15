@@ -25,5 +25,9 @@ export const main = Reach.App(() => {
 
     const amt = 1;
     commit();
+
+    Creator.pay([[amt, nftId]]);
+
+    Creator.interact.auctionReady();
     
 })

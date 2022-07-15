@@ -30,6 +30,8 @@ export const main = Reach.App(() => {
 
     Creator.interact.auctionReady();
 
+    assert(balance(nftId) == amt, "Balnace of NFT incorrect");
+
     const end = lastConsensusTime() + lenInBlocks;
     const [
         highestBidder,
@@ -40,7 +42,7 @@ export const main = Reach.App(() => {
       .invariant(balance() == (isFirstBid ? 0 : lastPrice))
       .while(lastConsensusTime() <= end)
       .api_(Bidder.bid, (bid) => {
-
+        check((bid > lastPrice), "Bid is too low");
         return [bid, (notify) => {
             notify([highestBidder, lastPrice]);
             if(!isFirstBid){

@@ -19,3 +19,24 @@ const params = {nftId, minBid, lenInBlocks};
 
 
 
+const ctcCreator = accCreator.contract(backend);
+await ctcCreator.participants.Creator({
+    getSale: () => {
+     console.log("Creator set params of sale", params);   
+     return params;
+    },
+    auctionReady: () => {
+        startBidders();
+    },
+    seeBid: (who, amount) => {
+        console.log(`Creator saw that ${stdlib.formatAddress(who)} bid ${stdlib.formatCurrency(amount)}.`);
+    },
+    showOutcome: (winner, amount) => {
+        console.log(`Creator saw that ${stdlib.formatAddress(winner)} won with ${stdlib.formatCurrency(amount)}`);
+    }
+}
+    
+);
+
+
+

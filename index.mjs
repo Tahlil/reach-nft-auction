@@ -18,6 +18,28 @@ const lenInBlocks = 9;
 const params = {nftId, minBid, lenInBlocks};
 
 
+let done = false;
+const bidders = [];
+const startBidders = async () => {
+    let bid = minBid;
+    const runBidder = async (who) => {
+        const inc = stdlib.parseCurrency(Math.random() * 10);
+        bid = bid.add(inc);
+
+        const acc = await stdlib.newTestAccount(startingBalance);
+        acc.setDebugLabel(who);
+        await acc.tokeAccept(nftId);
+
+        bidders.push([who, acc]);
+        const ctc = acc.contract(backend, ctcCreator.getInfo());
+        const getBal = async () => stdlib.formatCurrency(await stdlib.balanceOf(acc));
+
+        console.log(`${who} decides to bid ${stdlib.formatCurrency(bid)}.`);
+        console.log(`${who} balnce before is  ${await getBal()}`);
+
+        
+    };
+};
 
 const ctcCreator = accCreator.contract(backend);
 await ctcCreator.participants.Creator({
